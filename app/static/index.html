@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <meta name="theme-color" content="#0d0f12">
+  <title>PC Mixer</title>
+  <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="/static/style.css?v=4">
+</head>
+<body>
+  <header class="topbar">
+    <div class="tabs" role="tablist" aria-label="Mixer mode">
+      <button id="tab-fixed" class="tab active" data-tab="fixed">FIXED</button>
+      <button id="tab-active" class="tab" data-tab="active">ACTIVE</button>
+    </div>
+    <div class="top-actions">
+      <span id="connection" class="connection" title="Server connection"></span>
+      <button id="fullscreen-btn" class="icon-btn" title="Fullscreen">⛶</button>
+      <button id="settings-btn" class="icon-btn" title="Settings">⚙</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="fixed-panel" class="panel active">
+      <div id="fixed-grid" class="mixer-grid fixed-grid"></div>
+    </section>
+    <section id="active-panel" class="panel">
+      <div id="active-grid" class="mixer-grid active-grid"></div>
+      <div id="active-empty" class="empty hidden">No audio sessions in Windows mixer.</div>
+    </section>
+  </main>
+
+  <div id="settings-modal" class="modal hidden" aria-hidden="true">
+    <div class="modal-card">
+      <div class="modal-title-row">
+        <div>
+          <h2>Fixed channels</h2>
+          <p>Choose an app in the Windows audio mixer, or enter an .exe manually.</p>
+        </div>
+        <button id="close-settings" class="icon-btn">✕</button>
+      </div>
+      <div class="settings-list">
+        <label>Fixed 1<select id="fixed-0"></select><input id="fixed-custom-0" class="custom-exe hidden" placeholder="App.exe" autocomplete="off"></label>
+        <label>Fixed 2<select id="fixed-1"></select><input id="fixed-custom-1" class="custom-exe hidden" placeholder="App.exe" autocomplete="off"></label>
+        <label>Fixed 3<select id="fixed-2"></select><input id="fixed-custom-2" class="custom-exe hidden" placeholder="App.exe" autocomplete="off"></label>
+        <label>Fixed 4<select id="fixed-3"></select><input id="fixed-custom-3" class="custom-exe hidden" placeholder="App.exe" autocomplete="off"></label>
+      </div>
+      <label class="autostart-option">
+        <input id="autostart" type="checkbox">
+        <span>Start with Windows<small>Starts the server when you sign in, without opening a browser.</small></span>
+      </label>
+      <div class="network-box">
+        <strong>Open on phone</strong>
+        <div id="lan-urls"></div>
+        <small>PC and phone must be on the same local network. Do not expose port 8765 to the Internet.</small>
+      </div>
+      <div id="settings-error" class="settings-error hidden" role="alert"></div>
+      <div class="modal-actions">
+        <button id="save-settings" class="primary-btn">SAVE</button>
+      </div>
+    </div>
+  </div>
+
+  <template id="channel-template">
+    <article class="channel">
+      <div class="channel-role"></div>
+      <div class="channel-name"></div>
+      <div class="channel-exe"></div>
+      <div class="fader-wrap">
+        <div class="fader" role="slider" aria-valuemin="0" aria-valuemax="100" tabindex="0">
+          <div class="fader-fill"></div>
+          <div class="fader-thumb"></div>
+        </div>
+      </div>
+      <div class="volume-readout">0%</div>
+      <button class="mute-btn">🔊</button>
+      <div class="offline-badge">OFFLINE</div>
+    </article>
+  </template>
+
+  <script src="/static/app.js?v=4"></script>
+</body>
+</html>
