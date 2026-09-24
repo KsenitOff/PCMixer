@@ -1,4 +1,6 @@
-![PC Mixer cover illustration](assets/pc-mixer-cover.jpg)
+![PC Mixer running on a monitor and a phone](assets/pc-mixer-preview.jpg)
+
+*Preview artwork based on the PC Mixer interface.*
 
 # PC Mixer
 
@@ -13,6 +15,12 @@ Control the volume of individual Windows apps from a phone. PC Mixer runs a smal
 - **Optional startup:** launch the server when you sign in to Windows.
 
 PC Mixer groups audio sessions by executable. If an app has several sessions, its channel shows their average volume; moving the fader sets every session to the selected level.
+
+## Actual interface
+
+![PC Mixer Fixed view in a desktop browser](assets/pc-mixer-interface.png)
+
+*The real Fixed view in a desktop browser. The same controls are available on a phone in landscape orientation.*
 
 ## Get started
 
